@@ -16,6 +16,8 @@
 
   <meta name="theme-color" content="#fafafa">
   <script src="security.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js"></script>
+
 
 </head>
 
@@ -25,13 +27,14 @@
   <![endif]-->
 
   <!-- Add your site or application content here -->
-  <p>Username:</p>
-  <input type="text" placeholder="Enter Username" name="uname" required>
+  <p>Name:</p>
+  <input type="text" placeholder="Enter Name" name="uname" required>
 
-  <p>Password:</p>
-  <input type="password" placeholder="Enter Password" name="psw" required>
+  <p>Email:</p>
+  <input type="password" placeholder="Enter Email" name="psw" required>
+  <div class="g-recaptcha" data-sitekey="6LfQws8UAAAAAGK6Y3wyknNu_tufbTi46VepsBsH"></div>
 
-  <button type="submit">Login</button>
+  <button type="submit">Create</button>
   <label>
     <input type="checkbox" checked="checked" name="remember"> Remember me
   </label>
