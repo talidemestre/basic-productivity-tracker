@@ -8,7 +8,7 @@ submitted_unprod_today = false;
 
 
 function increment(type, day, month, year) {
-  if (submitted_today == false) {
+  if (submitted_today === false) {
     submitted_today = true;
     if (type === 'prod-count') {
       prod_days++;
