@@ -13,7 +13,9 @@ last_prod = parseInt(document.getElementById('displaylastprod').textContent);
 
 
 function increment(type, day, month, year) {
-  console.log("attempting function")
+  today = d.getDate();
+  submitted_today = (today == last);
+  console.log("attempting function");
   if (submitted_today == false) {
     submitted_today = true;
     if (type == 'prod-count') {

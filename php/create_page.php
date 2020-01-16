@@ -19,6 +19,17 @@ if ($link->query($sql) === TRUE) {
     echo "Error: " . $sql . "<br>" . $link->error;
 }
 
+$query = "SELECT * FROM MyPages WHERE uname = '".($_POST[pagename])."' AND email='".($_POST[pagemail])."'";
+
+$result = $link->query($query);
+$row = $result->fetch_assoc();
+
+$pageid = $row['id'];
+
 
 $link->close()
 ?>
+
+<head>
+  <meta http-equiv="refresh" content="0; URL=http://tracker.taliesindemestre.com/fetch_page.php?pageid=<?php echo $pageid; ?>" />
+</head>
