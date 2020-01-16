@@ -8,7 +8,9 @@ if ($link->connect_error) {
 }
 echo "Connected successfully";
 
+$namehash = hash('ripemd160', '$_POST[pagename]');
 
+echo $namehash;
 
 $sql = "INSERT INTO MyPages (uname, email, prod_days_sql, unprod_days_sql, submitted_day, last_prod)
 VALUES ('$_POST[pagename]', '$_POST[pagemail]', 0, 0, 0, 0)";
@@ -24,12 +26,23 @@ $query = "SELECT * FROM MyPages WHERE uname = '".($_POST[pagename])."' AND email
 $result = $link->query($query);
 $row = $result->fetch_assoc();
 
-$pageid = $row['id'];
+$pageid = $row['accessid'];
+
+$hashedid = $namehash.$pageid;
+
+$sql = "UPDATE MyPages SET id='hashedid' WHERE accessid = '$pageid'";
+
+if ($link->query($sql) === TRUE) {
+    echo "Record updated successfully";
+} else {
+    echo "Error updating record: " . $link->error;
+}
+
 
 
 $link->close()
 ?>
 
 <head>
-  <meta http-equiv="refresh" content="0; URL=http://tracker.taliesindemestre.com/fetch_page.php?pageid=<?php echo $pageid; ?>" />
+  <meta http-equiv="refresh" content="0; URL=http://tracker.taliesindemestre.com/fetch_page.php?pageid=<?php echo $hashedid; ?>" />
 </head>

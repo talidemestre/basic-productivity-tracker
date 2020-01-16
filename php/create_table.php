@@ -8,7 +8,8 @@ mysqli_select_db($link, 'users');
 
 // sql to create table
 $sql = "CREATE TABLE MyPages (
-id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+accessid INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+id INT(6),
 uname VARCHAR(50) NOT NULL,
 email VARCHAR(50) NOT NULL,
 prod_days_sql INT(6),
