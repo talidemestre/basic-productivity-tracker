@@ -9,11 +9,11 @@ submitted_today = (today == last)
 
 last_prod = parseInt(document.getElementById('displaylastprod').textContent);
 
-submitted_prod_today = false;
-submitted_unprod_today = false;
+
 
 
 function increment(type, day, month, year) {
+  console.log("attempting function")
   if (submitted_today == false) {
     submitted_today = true;
     if (type == 'prod-count') {
@@ -29,22 +29,22 @@ function increment(type, day, month, year) {
       last_prod = 0;
     }
   } else {
+    console.log("Already submitted today.")
     if (type == 'prod-count') {
-      if (submitted_unprod_today){
+      if (last_prod == 0){
         prod_days++;
         unprod_days--;
-        submitted_unprod_today = false;
-        submitted_prod_today = true;
         last_prod = 1;
+        console.log("Incrementing")
+
       }
     }
     if (type == 'unprod-count') {
-      if (submitted_prod_today){
+      if (last_prod == 1){
         prod_days--;
-        submitted_prod_today = false;
-        submitted_unprod_today = true;
         unprod_days++;
         last_prod = 0;
+        console.log('decrementing')
 
       }
     }

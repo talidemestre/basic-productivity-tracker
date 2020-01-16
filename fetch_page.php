@@ -2,8 +2,6 @@
 $link = mysqli_connect('localhost', 'admin_access', 'F7JC8U^IH&h6vteoAfL');
 mysqli_select_db($link, 'users');
 
-echo $_GET['pageid'];
-
 $targetid = $_GET['pageid'];
 
 $query = "SELECT * FROM MyPages WHERE id = '".($targetid)."'";
@@ -49,7 +47,6 @@ $link->close()
   <![endif]-->
 
   <!-- Add your site or application content here -->
-  <form action="iframe.php" target="my-iframe" method="post">
     <div style="margin: auto; display:block; text-align: center">
       <p>How was today?</p>
       <button onclick="increment('prod-count', d.getDate(), d.getMonth(), d.getYear())" style="width: 10%">Productive</button>
@@ -57,15 +54,15 @@ $link->close()
       <p>Productive Days: <span id='prod-display'> <?php echo $displayprod; ?> </span></p>
       <p>Unproductive Days: <span id='unprod-display'> <?php echo $displayunprod; ?> </span></p>
     </div>
-  </form>
 
 
-  <iframe name="my-iframe" src="iframe.php"></iframe>
+  <iframe name="hidden-iframe" hidden=true></iframe>
 
   <p hidden=true id="displaysubmitday"><?php echo $displaysubmitday; ?></p>
   <p hidden=true id="displaylastprod"><?php echo $displaylastprod; ?></p>
 
-  <form action="php/update_entry.php" method="post" hidden=true>
+  <form target='hidden-iframe' action="php/update_entry.php" method="post" hidden=true>
+    <input type="text" placeholder="Enter Email" name="pageid" id="pageid" value="<?php echo $targetid; ?>" required>
     <input type="text" placeholder="Enter Name" name="displayprod" id="displayprodid" required>
     <input type="text" placeholder="Enter Email" name="displayunprod" id="displayunprodid" required>
     <input type="text" placeholder="Enter Name" name="displaysubmitday" id="displaysubmitdayid" required>
