@@ -27,27 +27,18 @@
   <![endif]-->
 
   <!-- Add your site or application content here -->
-  <p>Name:</p>
-  <input type="text" placeholder="Enter Name" name="uname" required>
 
-  <p>Email:</p>
-  <input type="password" placeholder="Enter Email" name="psw" required>
-  <div class="g-recaptcha" data-sitekey="6LfQws8UAAAAAGK6Y3wyknNu_tufbTi46VepsBsH"></div>
+  <form action="php/create_page.php" method="post">
+    <p>Name:</p>
+    <input type="text" placeholder="Enter Name" name="pagename" required>
 
-  <button type="submit">Create</button>
-  <label>
-    <input type="checkbox" checked="checked" name="remember"> Remember me
-  </label>
+    <p>Email:</p>
+    <input type="text" placeholder="Enter Email" name="pagemail" required>
 
+    <!--  <div class="g-recaptcha" data-sitekey="6LfQws8UAAAAAGK6Y3wyknNu_tufbTi46VepsBsH"></div> -->
 
-
-  <div class="container" >
-    <a href="#">Register</a>
-    <br>
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
-
+    <button type="submit">Create</button>
+  </form>
 
 
 

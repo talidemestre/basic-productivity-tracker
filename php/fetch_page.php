@@ -1,3 +1,7 @@
+<?php
+  echo " Today is " . date("l") . ". ";
+?>
+
 var d = new Date();
 
 prod_days = 0;
