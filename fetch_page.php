@@ -15,9 +15,8 @@ $displayname = $row['uname'];
 $displaymail = $row['email'];
 $displayprod = $row['prod_days_sql'];
 $displayunprod = $row['unprod_days_sql'];
-$displaysubbed = $row['submitted_today'];
-$displaysubbedprod = $row['submitted_prod_today'];
-$displaysubbedunprod = $row['submitted_unprod_today'];
+$displaysubmitday = $row['submitted_day'];
+$displaylastprod = $row['last_prod'];
 
 echo $displayname;
 
@@ -42,7 +41,6 @@ $link->close()
 
   <meta name="theme-color" content="#fafafa">
 
-  <script src="js/increment.js"></script>
 </head>
 
 <body>
@@ -56,18 +54,25 @@ $link->close()
       <p>How was today?</p>
       <button onclick="increment('prod-count', d.getDate(), d.getMonth(), d.getYear())" style="width: 10%">Productive</button>
       <button onclick="increment('unprod-count', d.getDate(), d.getMonth(), d.getYear())" style="width: 10%">Unproductive</button>
-      <p id="prod-count">Productive Days: <span id='prod_display'> <?php echo $displayprod; ?> </span></p>
-      <p id="unprod-count">Unproductive Days: <span id='unprod_display'> <?php echo $displayunprod; ?> </span></p>
+      <p>Productive Days: <span id='prod-display'> <?php echo $displayprod; ?> </span></p>
+      <p>Unproductive Days: <span id='unprod-display'> <?php echo $displayunprod; ?> </span></p>
     </div>
   </form>
 
 
   <iframe name="my-iframe" src="iframe.php"></iframe>
 
-  <p style="hidden:true" id="displaysubbed"><?php echo $displaysubbed; ?></p>
-  <p style="hidden:false" id="displaysubbedprod"><?php echo $displaysubbedprod; ?></p>
-  <p style="hidden:true" id="displaysubbedunprod"><?php echo $displaysubbedunprod; ?></p>
+  <p hidden=true id="displaysubmitday"><?php echo $displaysubmitday; ?></p>
+  <p hidden=true id="displaylastprod"><?php echo $displaylastprod; ?></p>
 
+  <form action="php/update_entry.php" method="post" hidden=true>
+    <input type="text" placeholder="Enter Name" name="displayprod" id="displayprodid" required>
+    <input type="text" placeholder="Enter Email" name="displayunprod" id="displayunprodid" required>
+    <input type="text" placeholder="Enter Name" name="displaysubmitday" id="displaysubmitdayid" required>
+    <input type="text" placeholder="Enter Email" name="displaylastprod" id="displaylastprodid" required>
+
+    <button type="submit" id="hidden-button">Create</button>
+  </form>
 
 
   <script src="js/vendor/modernizr-3.8.0.min.js"></script>
@@ -75,9 +80,11 @@ $link->close()
   <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
   <script src="js/plugins.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/increment.js"></script>
 
 
 </body>
+
 
 </html>
 

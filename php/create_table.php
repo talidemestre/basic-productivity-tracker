@@ -13,9 +13,8 @@ uname VARCHAR(50) NOT NULL,
 email VARCHAR(50) NOT NULL,
 prod_days_sql INT(6),
 unprod_days_sql INT(6),
-submitted_today BOOLEAN,
-submitted_prod_today BOOLEAN,
-submitted_unprod_today BOOLEAN,
+submitted_day INT(6),
+last_prod BOOLEAN,
 reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )";
 
