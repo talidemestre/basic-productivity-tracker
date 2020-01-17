@@ -9,6 +9,23 @@ submitted_today = (today == last)
 
 last_prod = parseInt(document.getElementById('displaylastprod').textContent);
 
+//document.getElementById('body').style.background = 'rgb(0,144,0)';
+
+updateColour();
+
+function updateColour() {
+  p_count = prod_days - unprod_days;
+  lowered = 255 - p_count;
+  if (p_count < 0) {
+    lowered = 255 + p_count;
+    bg_color = 'rgb(255,' + lowered +',' +lowered+')';
+  } else {
+    lowered = 255 - p_count;
+    bg_color = 'rgb(' + lowered +', 255,' + lowered +')';
+  }
+  document.getElementById('body').style.background  = bg_color;
+  console.log("color shfit")
+}
 
 
 
@@ -55,6 +72,7 @@ function increment(type, day, month, year) {
     document.getElementById('unprod-display').textContent = unprod_days;
   }
   updateAll()
+  updateColour()
 }
 
 function updateAll(){
