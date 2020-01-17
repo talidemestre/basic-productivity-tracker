@@ -50,8 +50,8 @@ $link->close()
   <!-- Add your site or application content here -->
     <div style="margin: auto; display:block; text-align: center">
       <p>How was today?</p>
-      <button onclick="increment('prod-count', d.getDate(), d.getMonth(), d.getYear())" style="display:inline-block; width: 20%; height: 25vh; font-size:3vw">Productive</button>
-      <button onclick="increment('unprod-count', d.getDate(), d.getMonth(), d.getYear())" style="display:inline-block; width: 20%; height: 25vh; font-size:3vw">Unproductive</button>
+      <button onclick="increment('prod-count', d.getDate(), d.getMonth(), d.getYear())" style="display:inline-block; width: 25%; height: 25vh; font-size:3vw">Productive</button>
+      <button onclick="increment('unprod-count', d.getDate(), d.getMonth(), d.getYear())" style="display:inline-block; width: 25%; height: 25vh; font-size:3vw">Unproductive</button>
       <p>Productive Days: <span id='prod-display'> <?php echo $displayprod; ?> </span></p>
       <p>Unproductive Days: <span id='unprod-display'> <?php echo $displayunprod; ?> </span></p>
     </div>
