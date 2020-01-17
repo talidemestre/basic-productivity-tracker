@@ -62,12 +62,12 @@ $link->close()
   <p hidden=true id="displaysubmitday"><?php echo $displaysubmitday; ?></p>
   <p hidden=true id="displaylastprod"><?php echo $displaylastprod; ?></p>
 
-  <form target='hidden-iframe' action="php/update_entry.php" method="post" hidden=true>
-    <input type="text" placeholder="Enter Email" name="pageid" id="pageid" value="<?php echo $targetid; ?>" required>
-    <input type="text" placeholder="Enter Name" name="displayprod" id="displayprodid" required>
-    <input type="text" placeholder="Enter Email" name="displayunprod" id="displayunprodid" required>
-    <input type="text" placeholder="Enter Name" name="displaysubmitday" id="displaysubmitdayid" required>
-    <input type="text" placeholder="Enter Email" name="displaylastprod" id="displaylastprodid" required>
+  <form target='hidden-iframe' action="php/update_entry.php" method="post" hidden>
+    <input type="hidden" placeholder="Enter Email" name="pageid" id="pageid" value="<?php echo $targetid; ?>" required>
+    <input type="hidden" placeholder="Enter Name" name="displayprod" id="displayprodid" required>
+    <input type="hidden" placeholder="Enter Email" name="displayunprod" id="displayunprodid" required>
+    <input type="hidden" placeholder="Enter Name" name="displaysubmitday" id="displaysubmitdayid" required>
+    <input type="hidden" placeholder="Enter Email" name="displaylastprod" id="displaylastprodid" required>
 
     <button type="submit" id="hidden-button">Create</button>
   </form>

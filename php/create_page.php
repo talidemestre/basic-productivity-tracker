@@ -8,7 +8,9 @@ if ($link->connect_error) {
 }
 echo "Connected successfully";
 
-$namehash = hash('ripemd160', '$_POST[pagename]');
+$genhash = $_POST[pagename].$_POST[pagemail];
+
+$namehash = substr(md5($genhash), 5, 12);
 
 echo $namehash;
 
@@ -27,10 +29,10 @@ $result = $link->query($query);
 $row = $result->fetch_assoc();
 
 $pageid = $row['accessid'];
-
+echo $pageid;
 $hashedid = $namehash.$pageid;
 
-$sql = "UPDATE MyPages SET id='hashedid' WHERE accessid = '$pageid'";
+$sql = "UPDATE MyPages SET id='$hashedid' WHERE accessid = '$pageid'";
 
 if ($link->query($sql) === TRUE) {
     echo "Record updated successfully";
@@ -38,10 +40,11 @@ if ($link->query($sql) === TRUE) {
     echo "Error updating record: " . $link->error;
 }
 
-
+echo $hashedid;
 
 $link->close()
 ?>
+
 
 <head>
   <meta http-equiv="refresh" content="0; URL=http://tracker.taliesindemestre.com/fetch_page.php?pageid=<?php echo $hashedid; ?>" />
