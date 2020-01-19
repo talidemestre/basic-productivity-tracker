@@ -45,7 +45,7 @@ $link->close()
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
 
-  <p style="text-align :center"> Welcome to your website <?php echo $displayname;?>.</p>
+  <h1 style="text-align :center"><?php echo $displayname; ?>’s Productivity Tracker </h1>
 
   <!-- Add your site or application content here -->
     <div style="margin: auto; display:block; text-align: center">

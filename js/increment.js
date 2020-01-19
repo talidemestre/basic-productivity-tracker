@@ -32,6 +32,7 @@ function updateColour() {
 function increment(type, day, month, year) {
   today = d.getDate();
   submitted_today = (today == last);
+  last = today;
   console.log("attempting function");
   if (submitted_today == false) {
     submitted_today = true;
@@ -67,7 +68,6 @@ function increment(type, day, month, year) {
 
       }
     }
-    last = today
     document.getElementById('prod-display').textContent = prod_days;
     document.getElementById('unprod-display').textContent = unprod_days;
   }
