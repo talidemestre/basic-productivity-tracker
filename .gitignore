@@ -1,3 +1,4 @@
 app.js
 /.idea/*
-/.idea/
+.idea/
+*.iml
