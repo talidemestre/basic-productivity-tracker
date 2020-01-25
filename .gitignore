@@ -2,3 +2,5 @@ app.js
 /.idea/*
 .idea/
 *.iml
+.editorconfig
+.htaccess
