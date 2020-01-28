@@ -1,18 +1,15 @@
 <?php
 if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response']))
   {
-        echo "attempting to validate";
         $secret = '6LfQws8UAAAAAGJ3xlhBZ_q-usUZZ26pTuMGuCHc';
         $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['g-recaptcha-response']);
         $responseData = json_decode($verifyResponse);
         if($responseData->success)
         {
             $succMsg = 'Your contact request have submitted successfully.';
-            echo "validated";
         }
         else
         {
-            echo "validation failed";
             die("Robot verification failed, please try again.");
         }
    }else{
@@ -48,7 +45,7 @@ $sql = "INSERT INTO MyPages (uname, email, prod_days_sql, unprod_days_sql, submi
 VALUES ('$pagename', '$pagemail', 0, 0, 0, 0)";
 
 if ($link->query($sql) === TRUE) {
-    echo "New record created successfully";
+    //echo "New record created successfully";
 } else {
     echo "Error: " . $sql . "<br>" . $link->error;
 }
@@ -59,18 +56,18 @@ $result = $link->query($query);
 $row = $result->fetch_assoc();
 
 $pageid = $row['accessid'];
-echo $pageid;
+//echo $pageid;
 $hashedid = $namehash.$pageid;
 
 $sql = "UPDATE MyPages SET id='$hashedid' WHERE accessid = '$pageid'";
 
 if ($link->query($sql) === TRUE) {
-    echo "Record updated successfully";
+    //echo "Record updated successfully";
 } else {
     echo "Error updating record: " . $link->error;
 }
 
-echo $hashedid;
+//echo $hashedid;
 
 $link->close()
 ?>
