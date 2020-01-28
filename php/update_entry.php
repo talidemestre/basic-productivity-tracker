@@ -2,12 +2,12 @@
 $link = mysqli_connect('localhost', 'admin_access', 'F7JC8U^IH&h6vteoAfL');
 mysqli_select_db($link, 'users');
 
-$targetid = $_POST['pageid'];
+$targetid = filter_var($_POST['pageid'], FILTER_SANITIZE_STRING);
 echo $targetid;
-$prod_days = $_POST['displayprod'];
-$unprod_days = $_POST['displayunprod'];
-$submit_day = $_POST['displaysubmitday'];
-$last_prod = $_POST['displaylastprod'];
+$prod_days = filter_var($_POST['displayprod'], FILTER_SANITIZE_STRING);
+$unprod_days = filter_var($_POST['displayunprod'], FILTER_SANITIZE_STRING);
+$submit_day = filter_var($_POST['displaysubmitday'], FILTER_SANITIZE_STRING);
+$last_prod = filter_var($_POST['displaylastprod'], FILTER_SANITIZE_STRING);
 
 
 $sql = "UPDATE MyPages SET prod_days_sql='$prod_days', unprod_days_sql='$unprod_days', submitted_day='$submit_day', last_prod='$last_prod' WHERE id = '$targetid'";
