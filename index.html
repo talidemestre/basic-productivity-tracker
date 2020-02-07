@@ -18,6 +18,7 @@
   <script src="security.js"></script>
   <script src="https://www.google.com/recaptcha/api.js"></script>
 
+  <script src="js/switch_type.js"></script>
 
 </head>
 
@@ -29,7 +30,8 @@
   <!-- Add your site or application content here -->
 
   <h1>Create Personal Tracker Page</h1>
-  <form action="php/create_page.php" method="post">
+  <h2 id="form-title">Create Page: </h2>
+  <form id="form-type" action="php/create_page.php" method="post">
     <p>Name:</p>
     <input type="text" placeholder="Enter Name" name="pagename" required>
 
@@ -42,6 +44,8 @@
     <br>
     <button type="submit">Create</button>
   </form>
+  <a id="switch-link" onclick="switchToRetrieve()" href="#"> Retrieve page instead </a>
+
   <p>Use this form to generate a personalised productivity tracker page. Remember to copy/favourite the link to access it again, however it is possible to recover your page by inputting the same details into the form above.</p>
 
 
