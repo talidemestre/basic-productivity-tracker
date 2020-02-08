@@ -25,7 +25,7 @@ if ($link->connect_error) {
 }
 //echo "Connected successfully";
 
-$genhash = $_POST[pagename].$_POST[pagemail];
+$genhash = $_POST[pagename].$_POST[pagemail].$_POST[password];
 
 $namehash = substr(md5($genhash), 5, 12);
 

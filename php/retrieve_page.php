@@ -1,21 +1,4 @@
 <?php
-if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response']))
-  {
-        $secret = '6LfQws8UAAAAAGJ3xlhBZ_q-usUZZ26pTuMGuCHc';
-        $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['g-recaptcha-response']);
-        $responseData = json_decode($verifyResponse);
-        if($responseData->success)
-        {
-            $succMsg = 'Your contact request have submitted successfully.';
-        }
-        else
-        {
-            die("Robot verification failed, please try again.");
-        }
-   }else{
-    die("Failed to attempt reCAPTCHA. Please try again.");
-   }
-
 $link = mysqli_connect('localhost', 'admin_access', 'F7JC8U^IH&h6vteoAfL');
 mysqli_select_db($link, 'users');
 
@@ -23,6 +6,11 @@ mysqli_select_db($link, 'users');
 if ($link->connect_error) {
     die("Connection failed: " . $link->connect_error);
 }
+
+$genhash = $_POST[pagename].$_POST[pagemail].$_POST[password];
+
+$namehash = substr(md5($genhash), 5, 12);
+
 
 
 $pagename = filter_var($_POST['pagename'], FILTER_SANITIZE_STRING);
@@ -40,7 +28,9 @@ $query = "SELECT * FROM MyPages WHERE uname = '$pagename' AND email='$pagemail'"
 $result = $link->query($query);
 $row = $result->fetch_assoc();
 
-$id = $row['id'];
+$pageid = $row['accessid'];
+
+$hashedid = $namehash.$pageid;
 
 //echo $hashedid;
 
@@ -49,5 +39,5 @@ $link->close()
 
 
 <head>
-  <meta http-equiv="refresh" content="0; URL=http://tracker.taliesindemestre.com/fetch_page.php?pageid=<?php echo $id; ?>" />
+  <meta http-equiv="refresh" content="0; URL=http://tracker.taliesindemestre.com/fetch_page.php?pageid=<?php echo $hashedid; ?>" />
 </head>

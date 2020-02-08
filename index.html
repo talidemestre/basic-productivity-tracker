@@ -29,22 +29,27 @@
 
   <!-- Add your site or application content here -->
 
-  <h1>Create Personal Tracker Page</h1>
-  <h2 id="form-title">Create Page: </h2>
-  <form id="form-type" action="php/create_page.php" method="post">
+  <h1>Personal Tracker Page</h1>
+  <h2 id="form-title">Login: </h2>
+  <form id="form-type" action="php/retrieve_page.php" method="post">
     <p>Name:</p>
     <input type="text" placeholder="Enter Name" name="pagename" required>
 
     <p>Email:</p>
     <input type="text" placeholder="Enter Email" name="pagemail" required>
+
+    <p>Password:</p>
+    <input type="password" placeholder="Enter Password" name="password" required>
+    <div id="gcaptcha" hidden>
+      <br>
+      <div style="text-align: center; display: inline-block" class="g-recaptcha" data-sitekey="6LfQws8UAAAAAGK6Y3wyknNu_tufbTi46VepsBsH"></div>
+    </div>
+    <br id="gcaptcha-alt">
     <br>
-    <br>
-    <div style="text-align: center; display: inline-block" class="g-recaptcha" data-sitekey="6LfQws8UAAAAAGK6Y3wyknNu_tufbTi46VepsBsH"></div>
-    <br>
-    <br>
-    <button type="submit">Create</button>
+    <button id="submit-button" type="submit">Login</button>
   </form>
-  <a id="switch-link" onclick="switchToRetrieve()" href="#"> Retrieve page instead </a>
+  <br>
+  <a id="switch-link" onclick="switchToCreate()" href="#"> Click here to register. </a>
 
   <p>Use this form to generate a personalised productivity tracker page. Remember to copy/favourite the link to access it again, however it is possible to recover your page by inputting the same details into the form above.</p>
 
